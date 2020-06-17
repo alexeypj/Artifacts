@@ -8,15 +8,15 @@ void Main()
 	//This is information about function. Not a function! Expression does not have a return values
 	//This notation showes, how to EF reads the expression
 	Expression<Func<int>> five_exp =()=>5;
-	five_exp.Dump();
+	five_exp.Dump("expression");
 	//To run a function under expression you shuld Compile...
 	five_exp.Compile()().Dump();
 	//or
 	five_exp.Compile().Invoke().Dump("compiled");
 	
-	var user = new User();
+	var user = new User().Dump("User");
 	Expression<Func<User, object>> exp = user => user.Name;
-	exp.Dump();
+	exp.Dump("expression with user");
 	
 	var body = exp.Body.Dump("Body");
 	
@@ -34,4 +34,3 @@ public class User
 	public string Name { get; set; }
 	public int Age { get; set; }
 }
-

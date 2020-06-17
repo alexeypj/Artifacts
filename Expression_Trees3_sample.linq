@@ -24,11 +24,11 @@ void Main()
 	// solution: ???
 	
 	//parameter
-	var parameter = Expression.Parameter(typeof(SomeClass));
-	var accessor = Expression.PropertyOrField(parameter, selectProperty);
+	var parameter = Expression.Parameter(typeof(SomeClass)).Dump("parameter");
+	var accessor = Expression.PropertyOrField(parameter, selectProperty).Dump("accessor");
 	
-	var lambda = Expression.Lambda(accessor, false, parameter);
-	lambda.Compile().DynamicInvoke(someClass).Dump("Expression");
+	var lambda = Expression.Lambda(accessor, false, parameter).Dump("lambda");
+	lambda.Compile().DynamicInvoke(someClass).Dump("1");
 }
 
 
